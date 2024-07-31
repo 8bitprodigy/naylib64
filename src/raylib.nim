@@ -1,8 +1,8 @@
 from std/strutils import addf, toHex
 from std/unicode import Rune
-from std/syncio import writeFile
+#from std/syncio import writeFile
 import std/[assertions, paths]
-const raylibDir = currentSourcePath().Path.parentDir / Path"raylib"
+const raylibDir = getEnv("N64_INST") & "/mips64-elf/include"
 
 {.passC: "-I" & raylibDir.string.}
 {.passC: "-I" & string(raylibDir / Path"external/glfw/include").}
@@ -1963,7 +1963,7 @@ proc getDroppedFiles*(): seq[string] =
 proc getGamepadName*(gamepad: int32): string {.inline.} =
   ## Get gamepad internal name id
   result = $getGamepadNamePriv(gamepad)
-
+#[
 proc exportDataAsCode*(data: openArray[byte], fileName: string): bool =
   ## Export data to code (.nim), returns true on success
   result = false
@@ -1998,7 +1998,7 @@ proc exportDataAsCode*(data: openArray[byte], fileName: string): bool =
     traceLog(Info, "FILEIO: [%s] Data as code exported successfully", fileName)
   else:
     traceLog(Warning, "FILEIO: [%s] Failed to export data as code", fileName)
-
+]#
 proc loadShader*(vsFileName, fsFileName: string): Shader =
   ## Load shader from files and bind default locations
   result = loadShaderPriv(if vsFileName.len == 0: nil else: vsFileName.cstring,

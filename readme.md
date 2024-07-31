@@ -1,4 +1,4 @@
-# Naylib
+# Naylib64
 
 <img src="assets/naylib.png" alt="Naylib logo" width="15%" />
 
