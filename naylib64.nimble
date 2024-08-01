@@ -12,7 +12,7 @@ requires "nim >= 2.0.0"
 #requires "eminim == 2.8.2"
 
 # https://github.com/raysan5/raylib/wiki/Working-on-GNU-Linux
-import std/distros
+#[import std/distros
 if detectOs(Ubuntu):
   foreignDep "libasound2-dev libx11-dev libxrandr-dev libxi-dev libgl1-mesa-dev libglu1-mesa-dev libxcursor-dev libxinerama-dev"
   foreignDep "libxkbcommon-dev libwayland-bin"
@@ -22,7 +22,7 @@ elif detectOs(Fedora):
 elif detectOs(ArchLinux) or detectOs(Manjaro):
   foreignDep "alsa-lib mesa libx11 libxrandr libxi libxcursor libxinerama"
   foreignDep "libxkbcommon wayland"
-
+]#
 # Tasks
 
 import std/[os, strutils, parseutils]
@@ -40,16 +40,16 @@ task localInstall, "Install on your local workspace":
   echo "To complete the installation, run:\n"
   #echoForeignDeps()
   # Works with atlas
-  editRaylibDirConst(thisDir() / "src")
+  #editRaylibDirConst(thisDir() / "src")
 
 after install:
   when defined(atlas):
     localInstallTask()
   else:
     echo "To complete the installation, run:\n"
-    echoForeignDeps()
+    #echoForeignDeps()
     # Fails with atlas
-    editRaylibDirConst(thisDir())
+    #editRaylibDirConst(thisDir())
 
 task test, "Runs the test suite":
   localInstallTask()
