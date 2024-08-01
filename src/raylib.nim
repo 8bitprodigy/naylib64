@@ -1,8 +1,8 @@
 from std/strutils import addf, toHex
 from std/unicode import Rune
 #from std/syncio import writeFile
-import std/[assertions, paths]
-const raylibDir = getEnv("N64_INST") & "/mips64-elf/include"
+#import std/[assertions, paths]
+#[const raylibDir = getEnv("N64_INST") / Path"mips64-elf/include"
 
 {.passC: "-I" & raylibDir.string.}
 {.passC: "-I" & string(raylibDir / Path"external/glfw/include").}
@@ -121,7 +121,7 @@ else: {.compile: raylibDir / Path"rglfw.c".}
 {.compile: raylibDir / Path"rcore.c".}
 when defined(android):
   {.compile: AndroidNdk.Path / Path"sources/android/native_app_glue/android_native_app_glue.c".}
-
+]#
 const
   RaylibVersion* = (5, 5, 0)
 
@@ -1944,30 +1944,31 @@ proc initWindow*(width: int32, height: int32, title: string) =
 
 proc setWindowIcons*(images: openArray[Image]) =
   ## Set icon for window (multiple images, RGBA 32bit, only PLATFORM_DESKTOP)
-  setWindowIconsPriv(cast[ptr UncheckedArray[Image]](images), images.len.int32)
+  #setWindowIconsPriv(cast[ptr UncheckedArray[Image]](images), images.len.int32)
+  discard
 
 proc getMonitorName*(monitor: int32): string {.inline.} =
   ## Get the human-readable, UTF-8 encoded name of the primary monitor
-  result = $getMonitorNamePriv(monitor)
+  result = ""#$getMonitorNamePriv(monitor)
 
 proc getClipboardText*(): string {.inline.} =
   ## Get clipboard text content
-  result = $getClipboardTextPriv()
+  result = ""#$getClipboardTextPriv()
 
 proc getDroppedFiles*(): seq[string] =
   ## Get dropped files names
-  let dropfiles = loadDroppedFilesPriv()
-  result = cstringArrayToSeq(dropfiles.paths, dropfiles.count)
-  unloadDroppedFilesPriv(dropfiles) # Clear internal buffers
+  #let dropfiles = loadDroppedFilesPriv()
+  result = @[""]#cstringArrayToSeq(dropfiles.paths, dropfiles.count)
+  #unloadDroppedFilesPriv(dropfiles) # Clear internal buffers
 
 proc getGamepadName*(gamepad: int32): string {.inline.} =
   ## Get gamepad internal name id
   result = $getGamepadNamePriv(gamepad)
-#[
+
 proc exportDataAsCode*(data: openArray[byte], fileName: string): bool =
   ## Export data to code (.nim), returns true on success
   result = false
-  const TextBytesPerLine = 20
+#[  const TextBytesPerLine = 20
   # NOTE: Text data buffer size is estimated considering raw data size in bytes
   # and requiring 6 char bytes for every byte: "0x00, "
   var txtData = newStringOfCap(data.len*6 + 300)
