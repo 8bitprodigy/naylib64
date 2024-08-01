@@ -27,7 +27,7 @@ If you're familiar with the C version of raylib, you may find the
 
 ## Installation
 
-Install naylib easily with `nimble install naylib`.
+Install naylib easily with `nimble install naylib64`.
 
 For Linux users only: Ensure you have the [required](https://github.com/raysan5/raylib/wiki/Working-on-GNU-Linux)
 dependencies installed using your distribution's native package manager.
@@ -100,7 +100,7 @@ please feel free to engage with our project.
 
 ## License
 
-Naylib is open-source software licensed under the [MIT](LICENSE) License.
+Naylib64 is open-source software licensed under the [MIT](LICENSE) License.
 
 Please note that the raylib [source](src/raylib) code included in this distribution is licensed under
 the [zlib](LICENSE-RAYLIB) license.
