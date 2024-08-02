@@ -522,7 +522,7 @@ type
     b*: uint8 ## Color blue value
     a*: uint8 ## Color alpha value
 
-  Rectangle* {.importc: "rlRectangle", header: "raylib.h", bycopy.} = object ## Rectangle, 4 components
+  Rectangle* {.importc: "Rectangle", header: "raylib.h", bycopy.} = object ## Rectangle, 4 components
     x*: float32 ## Rectangle top-left corner position x
     y*: float32 ## Rectangle top-left corner position y
     width*: float32 ## Rectangle width
@@ -886,7 +886,7 @@ proc enableEventWaiting*() {.importc: "EnableEventWaiting".}
   ## Enable waiting for events on EndDrawing(), no automatic event polling
 proc disableEventWaiting*() {.importc: "DisableEventWaiting".}
   ## Disable waiting for events on EndDrawing(), automatic events polling
-proc showCursor*() {.importc: "rlShowCursor".}
+proc showCursor*() {.importc: "ShowCursor".}
   ## Shows cursor
 proc hideCursor*() {.importc: "HideCursor".}
   ## Hides cursor
@@ -1191,7 +1191,7 @@ proc drawSplineSegmentBezierCubic*(p1: Vector2, c2: Vector2, c3: Vector2, p4: Ve
   ## Draw spline segment: Cubic Bezier, 2 points, 2 control points
 proc checkCollisionCircleLine*(center: Vector2, radius: float32, p1: Vector2, p2: Vector2): bool {.importc: "CheckCollisionCircleLine".}
   ## Check if circle collides with a line created betweeen two points [p1] and [p2]
-proc loadImagePriv(fileName: cstring): Image {.importc: "rlLoadImage".}
+proc loadImagePriv(fileName: cstring): Image {.importc: "LoadImage".}
 proc loadImageRawPriv(fileName: cstring, width: int32, height: int32, format: PixelFormat, headerSize: int32): Image {.importc: "LoadImageRaw".}
 proc loadImageSvgPriv(fileNameOrString: cstring, width: int32, height: int32): Image {.importc: "LoadImageSvg".}
 proc loadImageAnim*(fileName: cstring, frames: out int32): Image {.importc: "LoadImageAnim".}
