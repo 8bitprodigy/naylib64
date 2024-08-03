@@ -1,0 +1,4 @@
+*/.nimcache
+.nimcache
+*.z64
+*.elf

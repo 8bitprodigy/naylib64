@@ -1,11 +1,6 @@
 from std/strutils import addf, toHex
 from std/unicode import Rune
 
-{.emit: """/*INCLUDESECTION*/
-  #include <libdragon.h>
-  #include <GL/gl.h>
-  #include <GL/glu.h>
-""".}
 #from std/syncio import writeFile
 #import std/[assertions, paths]
 #[const raylibDir = getEnv("N64_INST") / Path"mips64-elf/include"

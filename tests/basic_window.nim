@@ -22,6 +22,11 @@
 #
 # ****************************************************************************************
 
+{.emit: """/*INCLUDESECTION*/
+#include <libdragon.h>
+#include <GL/gl.h>
+#include <GL/glu.h>
+""".}
 import raylib
 
 # ----------------------------------------------------------------------------------------
@@ -29,8 +34,8 @@ import raylib
 # ----------------------------------------------------------------------------------------
 
 const
-  screenWidth = 800
-  screenHeight = 450
+  screenWidth = 320
+  screenHeight = 240
 
 # ----------------------------------------------------------------------------------------
 # Program main entry point
@@ -52,7 +57,7 @@ proc main =
     # ------------------------------------------------------------------------------------
     beginDrawing()
     clearBackground(RayWhite)
-    drawText("Congrats! You created your first window!", 190, 200, 20, LightGray)
+    drawText("Hello Nintendo64, from Nim & Naylib!", 10, 100, 20, LightGray)
     endDrawing()
     # ------------------------------------------------------------------------------------
   # De-Initialization
