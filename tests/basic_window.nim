@@ -27,7 +27,7 @@
 #include <GL/gl.h>
 #include <GL/glu.h>
 """.}
-import raylib
+import raylib64
 
 # ----------------------------------------------------------------------------------------
 # Global Variables Definition
