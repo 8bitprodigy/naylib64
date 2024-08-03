@@ -36,8 +36,8 @@ proc editRaylibDirConst(dir: string) =
     file[first..first+skipped-1] = "raylibDir = Path" & str
     writeFile("raylib.nim", file)
 
-task localInstall, "Install on your local workspace":
-  echo "To complete the installation, run:\n"
+task localInstall, "Install on your local workspace": discard
+  #echo "To complete the installation, run:\n"
   #echoForeignDeps()
   # Works with atlas
   #editRaylibDirConst(thisDir() / "src")
@@ -45,8 +45,8 @@ task localInstall, "Install on your local workspace":
 after install:
   when defined(atlas):
     localInstallTask()
-  else:
-    echo "To complete the installation, run:\n"
+  else: discard
+    #echo "To complete the installation, run:\n"
     #echoForeignDeps()
     # Fails with atlas
     #editRaylibDirConst(thisDir())

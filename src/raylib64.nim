@@ -1,7 +1,7 @@
 from std/strutils import addf, toHex
 from std/unicode import Rune
 
-{.emit: """
+{.emit: """/*INCLUDESECTION*/
   #include <libdragon.h>
   #include <GL/gl.h>
   #include <GL/glu.h>

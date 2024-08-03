@@ -2,7 +2,7 @@
 
 <img src="assets/naylib.png" alt="Naylib logo" width="15%" />
 
-Welcome to this repository! Here you'll find a Nim wrapper for raylib, a library for
+Welcome to this repository! Here you'll find a Nim wrapper for [raylib4Nintendo64](https://github.com/raylib4Consoles/raylib4Nintendo64/tree/main), a library for
 creating 2D and 3D games. The Nim API is designed to be user-friendly and easy to use.
 
 ## Features
