@@ -698,7 +698,7 @@ proc genBindings(t: TopLevel, fname: string; header, middle: string) =
         elif obj.name in ["Color", "Vector2", "Vector3", "Vector4"]:
           lit "* {.importc, header: \"raylib.h\", completeStruct, bycopy.} = object"
         elif obj.name == "Rectangle":
-          lit "* {.importc: \"rlRectangle\", header: \"raylib.h\", bycopy.} = object"
+          lit "* {.importc: \"Rectangle\", header: \"raylib.h\", bycopy.} = object"
         else: lit "* {.importc, header: \"raylib.h\", bycopy.} = object"
         doc obj
         scope:
@@ -839,7 +839,7 @@ proc genBindings(t: TopLevel, fname: string; header, middle: string) =
         lit " {.importc: "
         lit "\""
         if fnc.name in ["ShowCursor", "CloseWindow", "LoadImage", "DrawText", "DrawTextEx"]:
-          lit "rl" & fnc.name
+          lit "" & fnc.name
         else: ident fnc.name
         lit "\""
         if hasVarargs:

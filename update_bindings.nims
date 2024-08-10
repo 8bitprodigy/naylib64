@@ -1,11 +1,11 @@
 import std/os
 
 const
-  ProjectUrl = "https://github.com/planetis-m/naylib"
+  ProjectUrl = "https://github.com/8bitprodigy/naylib64"
   PkgDir = thisDir()
   RaylibDir = PkgDir / "raylib"
-  RaylibGit = "https://github.com/raysan5/raylib.git"
-  RayLatestCommit = "e5a1fc4f20f9daca17a2f76ffe217b1128625d0b"
+  RaylibGit = "https://github.com/raylib4Consoles/raylib.git"
+  RayLatestCommit = "c0c2e28c1ba0018a23a44d01f0ea4f6145ff626c"
   ApiDir = PkgDir / "api"
   DocsDir = PkgDir / "docs"
 
@@ -16,7 +16,7 @@ proc fetchLatestRaylib =
   if not dirExists(RaylibDir):
     exec "git clone --depth 1 " & RaylibGit & " " & quoteShell(RaylibDir)
   withDir(RaylibDir):
-    exec "git switch -"
+    #exec "git switch -"
     exec "git fetch --depth 100 origin " & RayLatestCommit
     exec "git checkout " & RayLatestCommit
 

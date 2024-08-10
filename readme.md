@@ -2,8 +2,10 @@
 
 <img src="assets/naylib.png" alt="Naylib logo" width="15%" />
 
-Welcome to this repository! Here you'll find a Nim wrapper for [raylib4Nintendo64](https://github.com/raylib4Consoles/raylib4Nintendo64/tree/main), a library for
+Welcome to this repository! Here you'll find a (*VERY* work in progress) Nim wrapper for [raylib4Nintendo64](https://github.com/raylib4Consoles/raylib4Nintendo64/tree/main), a library for
 creating 2D and 3D games. The Nim API is designed to be user-friendly and easy to use.
+
+This is currently a work in progress and does not yet work. The current issues I'm experiencing are related to it failing at the linker stage, as the linker is having difficulty finding the GL calls, but they should be there. Any help would be appreciated.
 
 ## Features
 

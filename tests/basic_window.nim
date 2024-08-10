@@ -21,14 +21,29 @@
 #   Converted to Nim by Antonis Geralis (@planetis-m) in 2022
 #
 # ****************************************************************************************
-
+#[
 {.emit: """/*INCLUDESECTION*/
 #include <libdragon.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
 """.}
 import raylib64
+]#
+import futhark
 
+importc:
+  path getEnv("N64_INST") & "mips64-elf/include"
+  "raylib.h"
+#[
+static:
+  writeFile("basic_window.c", """
+  #include <libdragon.h>
+  #include <GL/gl.h>
+  #include <GL/glu.h>
+  #include <raylib.h>
+  """)
+  {.compile: "basic_window.c".}
+]#
 # ----------------------------------------------------------------------------------------
 # Global Variables Definition
 # ----------------------------------------------------------------------------------------

@@ -3,13 +3,13 @@ from std/unicode import Rune
 
 #from std/syncio import writeFile
 #import std/[assertions, paths]
-#[const raylibDir = getEnv("N64_INST") / Path"mips64-elf/include"
+#const raylibDir = getEnv("N64_INST") / Path"mips64-elf/include"
 
-{.passC: "-I" & raylibDir.string.}
-{.passC: "-I" & string(raylibDir / Path"external/glfw/include").}
-{.passC: "-I" & string(raylibDir / Path"external/glfw/deps/mingw").}
+#{.passC: "-I" & raylibDir.string.}
+#{.passC: "-I" & string(raylibDir / Path"external/glfw/include").}
+#{.passC: "-I" & string(raylibDir / Path"external/glfw/deps/mingw").}
 {.passC: "-Wall -D_GNU_SOURCE -Wno-missing-braces -Werror=pointer-arith".}
-when defined(emscripten):
+#[when defined(emscripten):
   {.passC: "-DPLATFORM_WEB".}
   when defined(GraphicsApiOpenGlEs3):
     {.passC: "-DGRAPHICS_API_OPENGL_ES3".}
@@ -1720,7 +1720,7 @@ type
   MaterialMapsPtr* = distinct typeof(Material.maps)
   ShaderLocsPtr* = distinct typeof(Shader.locs)
   SoundAlias* = distinct Sound
-
+#[
 proc `=destroy`*(x: WeakImage) = discard
 proc `=dup`*(source: WeakImage): WeakImage {.nodestroy.} = source
 proc `=copy`*(dest: var WeakImage; source: WeakImage) {.nodestroy.} =
@@ -1826,12 +1826,12 @@ proc `=destroy`*(x: AutomationEventList) =
   unloadAutomationEventList(x)
 proc `=dup`*(source: AutomationEventList): AutomationEventList {.error.}
 proc `=copy`*(dest: var AutomationEventList; source: AutomationEventList) {.error.}
-
+]#
 type
   RArray*[T] = object
     len: int
     data: ptr UncheckedArray[T]
-
+#[
 proc `=destroy`*[T](x: RArray[T]) =
   if x.data != nil:
     for i in 0..<x.len: `=destroy`(x.data[i])
@@ -1851,7 +1851,7 @@ proc `=copy`*[T](dest: var RArray[T]; source: RArray[T]) =
     if source.data != nil:
       dest.data = cast[typeof(dest.data)](memAlloc(dest.len.uint32))
       for i in 0..<dest.len: dest.data[i] = source.data[i]
-
+]#
 proc raiseIndexDefect(i, n: int) {.noinline, noreturn.} =
   raise newException(IndexDefect, "index " & $i & " not in 0 .. " & $n)
 
