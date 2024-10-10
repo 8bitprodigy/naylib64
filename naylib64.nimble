@@ -1,9 +1,9 @@
 # Package
 
-version     = "0.1"
+version     = "0.2"
 author      = "Christopher DeBoy"
 description = "Raylib64 Nim wrapper for N64"
-license     = "MIT"
+license     = "Unlicense"
 srcDir      = "src"
 
 # Deps
@@ -27,6 +27,7 @@ elif detectOs(ArchLinux) or detectOs(Manjaro):
 
 import std/[os, strutils, parseutils]
 
+#[
 proc editRaylibDirConst(dir: string) =
   withDir(dir):
     var file = readFile("raylib.nim")
@@ -35,6 +36,7 @@ proc editRaylibDirConst(dir: string) =
     let str = "\"" & (dir / "raylib") & "\""
     file[first..first+skipped-1] = "raylibDir = Path" & str
     writeFile("raylib.nim", file)
+]#
 
 task localInstall, "Install on your local workspace": discard
   #echo "To complete the installation, run:\n"
