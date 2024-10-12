@@ -8,5 +8,5 @@ importc:
   "raylib.h"
   "raymath.h"
   "rlgl.h"
-  "GL/gl.h"
-  "GL/glu.h"
+  #"GL/gl.h"
+  #"GL/glu.h"

@@ -11,7 +11,7 @@ proc initApp(): bool = true
 proc finishApp(): void
 
 
-initWindow(screenWidth, screenHeight, "naylib64 [shapes] example - basic shapes")
+InitWindow(screenWidth, screenHeight, "naylib64 [shapes] example - basic shapes")
 
 var rotation : float = 0.0
 
