@@ -2,3 +2,4 @@
 .nimcache
 *.z64
 *.elf
+wrapper/naylib_wrapper
